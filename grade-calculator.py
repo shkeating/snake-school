@@ -31,4 +31,3 @@ grade = discussion + assignment + exercise + quiz
 
 #print final grade
 print('Your final grade calculates to ' + str(grade) + '%.')
-
