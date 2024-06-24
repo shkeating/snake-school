@@ -13,10 +13,10 @@ weight_exercise = 0.14
 weight_quiz = 0.14
 
 # earned grades inputs
-earned_discussion = input('please enter a numerical percentage grade from 0-100 of discussion posts ')
-earned_assignment = input('please enter a numerical percentage grade from 0-100 of weekly assignments ')
-earned_exercise = input('please enter a numerical percentage grade from 0-100 of w3 exercises ')
-earned_quiz = input('please enter a numerical percentage grade from 0-100 of w3 quizzes ')
+earned_discussion = input('please enter a numerical percentage grade from 0-100 of discussion posts: ')
+earned_assignment = input('please enter a numerical percentage grade from 0-100 of weekly assignments: ')
+earned_exercise = input('please enter a numerical percentage grade from 0-100 of w3 exercises: ')
+earned_quiz = input('please enter a numerical percentage grade from 0-100 of w3 quizzes: ')
 
 # multiply each percentage by its cooresponding category weight
 
@@ -29,4 +29,4 @@ quiz = weight_quiz * float(earned_quiz)
 grade = discussion + assignment + exercise + quiz
 
 #print final grade
-print('your final grade calculates to' + grade + '.')
+print('your final grade calculates to ' + str(grade) + '.')
