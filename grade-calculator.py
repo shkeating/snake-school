@@ -27,6 +27,8 @@ quiz = weight_quiz * float(earned_quiz)
 
 # sum the categories to get output of numerical grade earned
 grade = discussion + assignment + exercise + quiz
+# future enhancement: add in the corresponding letter grade to the calculated number
 
 #print final grade
-print('your final grade calculates to ' + str(grade) + '.')
+print('Your final grade calculates to ' + str(grade) + '%.')
+
