@@ -12,11 +12,27 @@ weight_assignment = 0.36
 weight_exercise = 0.14
 weight_quiz = 0.14
 
+#assignment grades
+
+#discussion grades
+discussion_points = 14
+earned_discussion_points = input('please enter points earned')
+
+
+#w3 exercise grade
+exercise_points = 14
+earned_exercise_points = input('please enter points earned on w3 exercises, up to 14 points')
+
+#w3 quiz grade
+quiz_points = 14
+earned_quiz_points = input('please enter points earned on w3 quiz, up to 14 points')
+
+
 # earned grades inputs
 earned_discussion = input('please enter a numerical percentage grade from 0-100 of discussion posts: ')
 earned_assignment = input('please enter a numerical percentage grade from 0-100 of weekly assignments: ')
-earned_exercise = input('please enter a numerical percentage grade from 0-100 of w3 exercises: ')
-earned_quiz = input('please enter a numerical percentage grade from 0-100 of w3 quizzes: ')
+earned_exercise = earned_exercise_points / exercise_points * 100
+earned_quiz = earned_quiz_points / quiz_points * 100
 
 # multiply each percentage by its cooresponding category weight
 
