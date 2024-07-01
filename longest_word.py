@@ -1,5 +1,5 @@
 # accepts a phrase from user letter-only input with word limit and determines which word in the phrase is the longest by containing the most characters
-phrase = ""
+user_phrase = ""
 
 #while loop ensures the program keeps asking for input until the user provides a valid string.
 while True:
@@ -14,4 +14,12 @@ while True:
         word_count = len(user_phrase.split())
         if word_count >= 14:
             raise ValueError("The input string is too long (15 words or more).")
-    except:
+    
+    except: # if it for some reason fails prompt user to try again
+        print("invalid input. Please try again.")
+
+    else: # Exit the while loop if the input is valid
+        print("Thanks. Let's see which of those words is the longest in character length!")
+        break  
+
+
