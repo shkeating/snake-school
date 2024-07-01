@@ -6,13 +6,11 @@ while True:
     user_phrase = input("Please enter a string: ")
     
     try:
-        #check if input is a string
-        if not type(user_phrase) is str:
-            raise TypeError("Only strings are allowed")
-         # Check if the string is not longer than 14 words
+        # Check if the input string is not longer than 14 words
         word_count = len(user_phrase.split())
         if word_count >= 14:
-            raise ValueError("The input string is too long (15 words or more).")
+            print("The input string is too long (15 words or more).") #ensures user sees what they did wrong
+            raise ValueError() # makes the program stop and re prompt for input 
     
     except: # if it for some reason fails prompt user to try again
         print("invalid input. Please try again.")
