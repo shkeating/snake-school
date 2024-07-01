@@ -43,4 +43,5 @@ for word in words:
 # pairs words with their counts and prints out all the users words with how many letters are in them. f string used to make string interpolation less annoying (or, i guess more like javascript lol)
 for word, count in zip(words, letter_counts):
     print(f"The word '{word}' has {count} letters.")
-    print(f"The longest word is '{longest_word}' with {max_length} letters.")
+
+print(f"The longest word is '{longest_word}' with {max_length} letters.")
