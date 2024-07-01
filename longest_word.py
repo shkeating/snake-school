@@ -1,5 +1,4 @@
 # accepts a phrase from user letter-only input with word limit and determines which word in the phrase is the longest by containing the most characters
-user_phrase = ""
 
 #while loop ensures the program keeps asking for input until the user provides a valid string.
 while True:
@@ -22,4 +21,15 @@ while True:
         print("Thanks. Let's see which of those words is the longest in character length!")
         break  
 
+#turn user phrase into a list stored in word list variable
+words = user_phrase.split()
+## print("we have a total of " + len(words) + " in your phrase. The words you entered are" + words +  ".")
+
+#set up list to store letter counts in
+letter_counts = []
+for word in words:
+    # Count the number of letters each of the words
+    count = len(word)
+    # add the counted letters into the list
+    letter_counts.append(count)
 
