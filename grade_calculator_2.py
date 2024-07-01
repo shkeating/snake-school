@@ -13,11 +13,17 @@ weight_exercise = 0.14
 weight_quiz = 0.14
 
 #assignment grades
+assignment_points = 36
+    # creates empty list to store the points
+earned_assignment_points = []
+
+    #assignment point collection loop so we aren't here all day
+    for i in range(1, 7):
+       
 
 #discussion grades
-discussion_points = 14
-earned_discussion_points = input('please enter points earned')
-
+discussion_points = 36
+earned_discussion_points = 
 
 #w3 exercise grade
 exercise_points = 14
