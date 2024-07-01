@@ -8,8 +8,8 @@ while True:
     try:
         # Check if the input string is not longer than 14 words
         word_count = len(user_phrase.split())
-        if word_count >= 14:
-            print("The input string is too long (15 words or more).") #ensures user sees what they did wrong
+        if word_count >= 14 or word_count <= 0:
+            print("The input string is not the right length (at least 1 word, and no longer than than 14 words).") #ensures user sees what they did wrong
             raise ValueError() # makes the program stop and re prompt for input 
     
     except: # prompt user to try again
