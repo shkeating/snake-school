@@ -23,6 +23,9 @@ while True:
 
 #turn user phrase into a list stored in word list variable
 words = user_phrase.split()
+longest_word = ""
+max_length = 0
+
 ## print("we have a total of " + len(words) + " in your phrase. The words you entered are" + words +  ".")
 
 #set up list to store letter counts in
@@ -32,7 +35,12 @@ for word in words:
     count = len(word)
     # add the counted letters into the list
     letter_counts.append(count)
+    # Check if the current word is longer than the longest word found so far
+    if len(word) > max_length:
+        longest_word = word
+        max_length = len(word)
 
-# pairs words with their counts and prints out all the users words with how many letters are in them
+# pairs words with their counts and prints out all the users words with how many letters are in them. f string used to make string interpolation less annoying (or, i guess more like javascript lol)
 for word, count in zip(words, letter_counts):
     print(f"The word '{word}' has {count} letters.")
+    print(f"The longest word is '{longest_word}' with {max_length} letters.")
