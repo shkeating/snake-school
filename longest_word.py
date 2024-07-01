@@ -10,3 +10,8 @@ while True:
         #check if input is a string
         if not type(user_phrase) is str:
             raise TypeError("Only strings are allowed")
+         # Check if the string is not longer than 14 words
+        word_count = len(user_phrase.split())
+        if word_count >= 14:
+            raise ValueError("The input string is too long (15 words or more).")
+    except:
