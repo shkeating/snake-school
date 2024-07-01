@@ -33,3 +33,6 @@ for word in words:
     # add the counted letters into the list
     letter_counts.append(count)
 
+# pairs words with their counts and prints out all the users words with how many letters are in them
+for word, count in zip(words, letter_counts):
+    print(f"The word '{word}' has {count} letters.")
