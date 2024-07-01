@@ -24,8 +24,6 @@ words = user_phrase.split()
 longest_word = ""
 max_length = 0
 
-## print("we have a total of " + len(words) + " in your phrase. The words you entered are" + words +  ".")
-
 #set up list to store letter counts in
 letter_counts = []
 for word in words:
