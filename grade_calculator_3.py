@@ -54,10 +54,14 @@ print("...") #breaks up output to increase legibility
 
 print("We will start by entering your points earned on your discussion posts. They are worth 6 points each")
   #creates varibale to rep dictionary value for points earned list for easuer use in computations
-#collecting discussion points for the six assignments
-while True:
-    earned_points["discussion"]=[]
-    discuss = input(f"Enter a number of points earned for discussion {len((earned_points['discussion']))}): ")
+
+  
+  #initalizes earned points key value pair for dicussions
+earned_points["discussion"]=[]
+
+#collecting discussion points for the amount set by the user in the quantity dictionary
+for i in range(quantity["discussion"]):
+    discuss = input(f"Enter a number of points earned for discussion {i + 1}): ")
     try:
         discuss = float(discuss)
     except:
@@ -65,14 +69,10 @@ while True:
         continue
     if discuss > 6 or discuss < 0: #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 6.')
-        continue
-    if len(earned_points['discussion']) == quantity["discussion"]:  #stop collecting values once we have the amount of discussion posts there were
-        break
+        continue #To do: fix this it does not stop the input from being accepted
     earned_points['discussion'].append(float(discuss))
-
-
-print(len(earned_points['discussion']))
-print(quantity['discussion'])
+    i+=1
+    
 
 print("...")
 print("...")
@@ -80,21 +80,22 @@ print("...")
 #assignment grades
 print("Next, we will enter in your points for each weekly assignment. They are worth 6 points each.")
 
-#collecting assignment points for the six assignments
-while True:
-    earned_points["assignment"] = []
-    assignment = input(f"Enter a number of points earned for assignment {len(earned_points['assignment'])}): ") 
+  #initalizes earned points key value pair for dicussions
+earned_points["assignment"]=[]
+
+#collecting assignment points for the amount set by the user in the quantity dictionary
+for i in range(quantity["assignment"]):
+    assign = input(f"Enter a number of points earned for assignment {i + 1}): ")
     try:
-        assignment = float(assignment)
+        assign = float(assign)
     except:
         print('Please use numeric digits.')
         continue
-    if assignment > 6 or assignment < 0: #make sure it a valid number of points and lwet them reenter if not
+    if assign > 6 or assign < 0: #make sure it a valid number of points and let them reenter if not
         print('Please enter a positive number equal to or less than 6.')
         continue
-    if len(earned_points['assignment']) == quantity["assignment"]:  #stop collecting values once we have the number of assignments there were (one addded to count for list indexing)
-        break
-    earned_points['assignment'].append(float(assignment))
+    earned_points['assignment'].append(float(assign))
+    i+=1
 
 print("...")
 print("...")
@@ -104,7 +105,7 @@ print("...")
 print("Just two more left to enter! The w3 exercise completion is worth 14 points. How many did you earn?")
 while True:
     print('Enter points earned on w3 exercises, up to 14 points: ')
-    earned_points["exercise"] = input()
+    earned_points["exercise"].update(input())
     try:
         earned_points["exercise"] = float(earned_points["exercise"])
     except:
@@ -122,7 +123,7 @@ print("...")
 #w3 quiz grade. take input from user, validate it, and add it to earned points dictionary
 while True:
     print('Last one! Enter points earned on the w3 quiz, up to 14 points: ')
-    earned_points["quiz"] = input()
+    earned_points["quiz"].update(input())
     try:
          earned_points["quiz"] = float(earned_points["quiz"])
     except:
@@ -154,29 +155,27 @@ percent = {}
 
 for key in total_points:
     percent[key] = total_points[key] / points[key] * 100
-
+    #calculates percent by dividing points attainable by total points earned for the category, and then multiply by 100 to get their percentage value out of 100
 print(percent)
 
-#loop through dictionary and do calculations on percent, and display percentage for each category, points earned, and points possible
-
+#loop through dictionary, display percentage for each category, points earned, and points possible for each category
 for key in percent:
     print(f"the average for {key} was {percent[key]}%, with points totaling to {total_points[key]} out of {points[key]}.")
 
 
-# loop through percantages and multiply them by their weights
+# loop through percentages and multiply them by their weights. 
 
 weighted = {}
-grade = []
 
 for key in percent:
-   weighted[key] = weight[key] * earned_points[key]
+   weighted[key] = weight[key] * total_points[key]
 
 # sum the categories to get output of numerical grade earned
   # initialize variable for grade
 grade = 0
  # loop through weighted values dictionary to total up the points and assign to the grade variable
 for num in weighted.values():
-    grade += num
+    grade += num #loops through each vlaue and adds the next until we have grabbed all the vlaues out of the weighted scores dictionary
 
 
 #add in the corresponding letter grade to the calculated number
