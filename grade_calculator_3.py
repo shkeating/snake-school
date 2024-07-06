@@ -71,16 +71,20 @@ earned_points["discussion"]=[]
 #collecting discussion points for the amount set by the user in the quantity dictionary
 for i in range(quantity["discussion"]):
     while (True):
+        #takes user input in for discussion post
         discuss = input(f"Enter a number of points earned for discussion {i + 1}): ")
         try: 
+            #checks if points entered are numerical
             discuss = float(discuss)
             if 0 <= discuss <= 6:
                 earned_points['discussion'].append(float(discuss))
-                i+=1 
+                i+=1 #increments i to move to next discussion
                 break
             else:
                 print('Please enter a number between 0 and 6. Please try again.')
+                 #throws an error if user tries to enter an out of range number
         except ValueError:
+               #throws an error if user tries to enter non numerical data
             print("Invalid input. Please enter a valid number between 0 and 6.")     
             
 print("...")
@@ -100,19 +104,25 @@ earned_points["assignment"]=[]
 
 #collecting assignment points for the amount set by the user in the quantity dictionary
 for i in range(quantity["assignment"]):
-    assign = input(f"Enter a number of points earned for assignment {i + 1}): ")
-    i+=1
-    try:
-        assign = float(assign)
-    except:
-        print('Please use numeric digits.')
-        i-=1
-        continue
-    if assign > 6 or assign < 0: #make sure it a valid number of points and let them reenter if not
-        print('Please enter a positive number equal to or less than 6.')
-        i-=1
-        continue
-    earned_points['assignment'].append(float(assign))
+    while (True):
+        #takes user input for assignment
+        assign = input(f"Enter a number of points earned for assignment {i + 1}): ")
+        try: 
+            # checks that numerical data type was entered
+            assign = float(assign)
+            #checks if number is between 0 and 6
+            if 0 <= assign <= 6:
+                # if it is, adds vlaue to assignments list in earned points dictionary
+                earned_points['assignment'].append(float(assign))
+                i+=1 #increments i to move to next assignment
+                break
+            else:
+                #throws an error if user tries to enter an out of range number
+                print('Please enter a number between 0 and 6. Please try again.')
+                continue
+        except ValueError:
+             #throws an error if user tries to enter non numerical data
+            print("Invalid input. Please enter a valid number between 0 and 6.")
 
 print("...")
 print("...")
@@ -129,17 +139,16 @@ print("Just two more left to enter! The w3 exercise completion is worth 14 point
 while True:
     print('Enter points earned on w3 exercises, up to 14 points: ')
     exer = input()
-    earned_points["exercise"] = exer
     try:
-        earned_points["exercise"] = float(earned_points["exercise"])
-    except:
-        print('Please use numeric digits.')
-        break
-    if earned_points["exercise"] > 14 or earned_points["exercise"] < 0:  #make sure it a valid number of points and lwet them reenter if not
-        print('Please enter a positive number equal to or less than 14.')
-        break
-    break
-
+        exer = float(exer)
+        if exer > 14 or exer < 0:  #make sure it a valid number of points and lwet them reenter if not
+            print('Please enter a positive number equal to or less than 14.')
+            continue
+        else:
+            earned_points["exercise"] = exer #adds input value to eared points dictionary
+            break
+    except ValueError:
+        print('Please enter numerical input')
 
 print("...")
 print("...")
@@ -154,23 +163,22 @@ print("...")
 while True:
     print('Last one! Enter points earned on the w3 quiz, up to 14 points: ')
     quiz = input()
-    earned_points["quiz"] = quiz
     try:
-         earned_points["quiz"] = float(earned_points["quiz"])
-    except:
-        print('Please use numeric digits.')
-        continue
-    if  earned_points["quiz"] > 14 or  earned_points["quiz"] < 0: #make sure it a valid number of points and lwet them reenter if not
-        print('Please enter a positive number equal to or less than 14.')
-        continue
-    break
-
+        quiz = float(quiz)
+        if quiz > 14 or quiz < 0: #make sure it a valid number of points and lwet them reenter if not
+            print('Please enter a positive number equal to or less than 14.')
+            continue
+        else:
+            earned_points["quiz"] = quiz #adds input value to eared points dictionary
+            break
+    except ValueError:
+        print('Please enter numerical input')
 
 ##
 ###
 #### calculations of collected input
 ###
-#
+##
 
 print("Calculating grade...")
 print("...")
