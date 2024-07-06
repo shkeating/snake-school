@@ -214,7 +214,7 @@ for key in percent:
 grade = 0
  # loop through weighted values dictionary to total up the points and assign to the grade variable
 for num in weighted.values():
-    grade += num #loops through each value and adds the next until we have grabbed all the vlaues out of the weighted scores dictionary
+    grade += num #loops through each value and adds the next until we have grabbed all the values out of the weighted scores dictionary
 
 
 ### add in the corresponding letter grade to the calculated number
