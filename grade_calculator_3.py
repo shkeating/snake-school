@@ -6,9 +6,14 @@
 # the final course grade using the weights of 
 # each type of assignment and the means for each category using their weights
 
-# variable initalization
+##
+###
+#### data structure initalization
+###
+#
 
 print("Let's figure out your grade in Programming for Problem Solving!")
+
 
 # assignment type weights, stored in dictionary
 weight = {
@@ -19,36 +24,40 @@ weight = {
 }
 # assignment quantities, stored in dictionary
 quantity = {
-    "discussion": int(input("how many discussion posts were assigned in the course? ")),
+    "discussion": int(input("how many weekly discussion posts were assigned in the course? ")),
     "assignment": int(input("how many weekly assignments were assigned in the course? ")),
     "exercise": 1, # only one of these, will leave it be at 1 as an int
     "quiz":  1 # only one of these, will leave it be at 1 as an int
 }
 
+# calculates points possible to earn for each asssignment type using the values in our quantities dictionary
 points = {
     "discussion": quantity["discussion"] * 6,
     "assignment": quantity["assignment"] * 6,
-    "exercise": quantity["discussion"] * 14,
-    "quiz": quantity["discussion"] * 14
+    "exercise": quantity["exercise"] * 14,
+    "quiz": quantity["quiz"] * 14
 }
 
+#initialize dictionary to store earned points
 earned_points = {
-    "discussion": [],
-    "assignment": [],
-    "exercise": [],
-    "quiz": []
 }
 
-total_points = {
-    "discussion": sum(earned_points["discussion"]),
-    "assignment": sum(earned_points["assignment"])
-}
+print("...")
+print("...") #breaks up output to increase legibility
 
-print("We will start by entering your points earned on each assignment in the course. We will start with your discussion posts. They are worth 6 points each")
 
+##
+###
+#### discussion posts
+###
+#
+
+print("We will start by entering your points earned on your discussion posts. They are worth 6 points each")
+  #creates varibale to rep dictionary value for points earned list for easuer use in computations
 #collecting discussion points for the six assignments
 while True:
-    discuss = input(f"Enter a number of points earned for discussion {len(earned_points["discussion"]) + 1}): ")
+    earned_points["discussion"]=[]
+    discuss = input(f"Enter a number of points earned for discussion {len((earned_points['discussion']))}): ")
     try:
         discuss = float(discuss)
     except:
@@ -57,19 +66,24 @@ while True:
     if discuss > 6 or discuss < 0: #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 6.')
         continue
-    if len(earned_points["discussion"]) + 1 >= quantity["discussion"]:  #stop collecting values once we have the amount of discussion posts there were
+    if len(earned_points['discussion']) == quantity["discussion"]:  #stop collecting values once we have the amount of discussion posts there were
         break
-    earned_points["discussion"].append(float(discuss))
+    earned_points['discussion'].append(float(discuss))
 
+
+print(len(earned_points['discussion']))
+print(quantity['discussion'])
+
+print("...")
+print("...")
 
 #assignment grades
-assignment_points = quantity["assignment"] * 6
-    # creates empty list to store the points
-earned_assignment_points = []
+print("Next, we will enter in your points for each weekly assignment. They are worth 6 points each.")
 
 #collecting assignment points for the six assignments
 while True:
-    assignment = input(f"Enter a number of points earned for assignment {len(earned_assignment_points)+ 1}): ") #adds one to account for list starting at index 0
+    earned_points["assignment"] = []
+    assignment = input(f"Enter a number of points earned for assignment {len(earned_points['assignment'])}): ") 
     try:
         assignment = float(assignment)
     except:
@@ -78,66 +92,95 @@ while True:
     if assignment > 6 or assignment < 0: #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 6.')
         continue
-    if len(earned_assignment_points) + 1 >= quantity["assignment"]:  #stop collecting values once we have the number of assignments there were (one addded to count for list indexing)
+    if len(earned_points['assignment']) == quantity["assignment"]:  #stop collecting values once we have the number of assignments there were (one addded to count for list indexing)
         break
-    earned_assignment_points.append(float(assignment))
-total_earned_assignment_points = sum(earned_assignment_points)
+    earned_points['assignment'].append(float(assignment))
 
-#w3 exercise grade
-exercise_points = 14
+print("...")
+print("...")
+
+
+#w3 exercise grade, take input from user, validate it, and add it to earned points dictionary
+print("Just two more left to enter! The w3 exercise completion is worth 14 points. How many did you earn?")
 while True:
     print('Enter points earned on w3 exercises, up to 14 points: ')
-    earned_exercise_points = input()
+    earned_points["exercise"] = input()
     try:
-        earned_exercise_points = float(earned_exercise_points)
+        earned_points["exercise"] = float(earned_points["exercise"])
     except:
         print('Please use numeric digits.')
         continue
-    if earned_exercise_points > 14 or earned_exercise_points < 0:  #make sure it a valid number of points and lwet them reenter if not
+    if earned_points["exercise"] > 14 or earned_points["exercise"] < 0:  #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 14.')
         continue
     break
 
-#w3 quiz grade
-quiz_points = 14
+
+print("...")
+print("...")
+
+#w3 quiz grade. take input from user, validate it, and add it to earned points dictionary
 while True:
-    print('Enter points earned on w3 quiz, up to 14 points: ')
-    earned_quiz_points = input()
+    print('Last one! Enter points earned on the w3 quiz, up to 14 points: ')
+    earned_points["quiz"] = input()
     try:
-        earned_quiz_points = float(earned_quiz_points)
+         earned_points["quiz"] = float(earned_points["quiz"])
     except:
         print('Please use numeric digits.')
         continue
-    if earned_quiz_points > 14 or earned_quiz_points < 0: #make sure it a valid number of points and lwet them reenter if not
+    if  earned_points["quiz"] > 14 or  earned_points["quiz"] < 0: #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 14.')
         continue
     break
 
+print("Calculating grade...")
+print("...")
+print("...")
+print("...")
+print("Done!")
+
+#dictionary storing total point totals computations
+
+total_points = {
+    "discussion": sum(earned_points['discussion']),
+    "assignment": sum(earned_points['assignment']),
+    "exercise": earned_points['exercise'],
+    "quiz": earned_points['quiz']
+}
+print(f"total discussion points is {total_points['discussion']}")
 
 # earned grades percentage calculations
-earned_discussion = total_earned_discussion_points / discussion_points * 100
-earned_assignment = total_earned_assignment_points / assignment_points * 100
-earned_exercise = earned_exercise_points / exercise_points * 100
-earned_quiz = earned_quiz_points / quiz_points * 100
+percent = {}
 
-# output points and averages for every category
-print(f"the average for discussion posts was {earned_discussion}%, with points totaling to {total_earned_discussion_points} out of 36.")
-print(f"the average for weekly assignments was {earned_assignment}%, with points totaling to {total_earned_discussion_points} out of 36.")
-print(f"the average for the w3 quiz was {earned_quiz}%, with points totaling to {earned_quiz_points} out of 14.")
-print(f"the average for the w3 exercises was {earned_exercise}%, with points totaling to {earned_exercise_points} out of 14.")
+for key in total_points:
+    percent[key] = total_points[key] / points[key] * 100
 
-# multiply each percentage by its cooresponding category weight
+print(percent)
 
-discussion = weight["discussion"] * float(earned_discussion)
-assignment = weight["assignment"] * float(earned_assignment)
-exercise = weight["exercise"] * float(earned_exercise)
-quiz = weight["quiz"] * float(earned_quiz)
+#loop through dictionary and do calculations on percent, and display percentage for each category, points earned, and points possible
+
+for key in percent:
+    print(f"the average for {key} was {percent[key]}%, with points totaling to {total_points[key]} out of {points[key]}.")
+
+
+# loop through percantages and multiply them by their weights
+
+weighted = {}
+grade = []
+
+for key in percent:
+   weighted[key] = weight[key] * earned_points[key]
 
 # sum the categories to get output of numerical grade earned
-grade = discussion + assignment + exercise + quiz
+  # initialize variable for grade
+grade = 0
+ # loop through weighted values dictionary to total up the points and assign to the grade variable
+for num in weighted.values():
+    grade += num
 
 
 #add in the corresponding letter grade to the calculated number
+  #initalize letter grade variable as a string
 letter_grade=""
 
 if grade >= 90:
