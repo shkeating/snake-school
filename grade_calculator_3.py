@@ -20,7 +20,7 @@ print("...")
 
 ##
 ###
-#### data structure initalization
+#### data structure initialization
 ###
 #
 
@@ -39,7 +39,7 @@ quantity = {
     "quiz":  1 # only one of these, will leave it be at 1 as an int
 }
 
-# calculates points possible to earn for each asssignment type using the values in our quantities dictionary
+# calculates points possible to earn for each assignment type using the values in our quantities dictionary
 points = {
     "discussion": quantity["discussion"] * 6,
     "assignment": quantity["assignment"] * 6,
@@ -62,10 +62,10 @@ print("...") #breaks up output to increase legibility
 #
 
 print("We will start by entering your points earned on your discussion posts. They are worth 6 points each")
-  #creates varibale to rep dictionary value for points earned list for easuer use in computations
+  #creates variable to rep dictionary value for points earned list for easier use in computations
 
   
-  #initalizes earned points key value pair for dicussions
+  #initializes earned points key value pair for discussions
 earned_points["discussion"]=[]
 
 #collecting discussion points for the amount set by the user in the quantity dictionary
@@ -99,7 +99,7 @@ print("...")
 
 print("Next, we will enter in your points for each weekly assignment. They are worth 6 points each.")
 
-  #initalizes earned points key value pair for dicussions
+  #initializes earned points key value pair for discussions
 earned_points["assignment"]=[]
 
 #collecting assignment points for the amount set by the user in the quantity dictionary
@@ -141,7 +141,7 @@ while True:
     exer = input()
     try:
         exer = float(exer)
-        if exer > 14 or exer < 0:  #make sure it a valid number of points and lwet them reenter if not
+        if exer > 14 or exer < 0:  #make sure it a valid number of points and let them reenter if not
             print('Please enter a positive number equal to or less than 14.')
             continue
         else:
@@ -165,7 +165,7 @@ while True:
     quiz = input()
     try:
         quiz = float(quiz)
-        if quiz > 14 or quiz < 0: #make sure it a valid number of points and lwet them reenter if not
+        if quiz > 14 or quiz < 0: #make sure it a valid number of points and let them reenter if not
             print('Please enter a positive number equal to or less than 14.')
             continue
         else:
@@ -214,11 +214,11 @@ for key in percent:
 grade = 0
  # loop through weighted values dictionary to total up the points and assign to the grade variable
 for num in weighted.values():
-    grade += num #loops through each vlaue and adds the next until we have grabbed all the vlaues out of the weighted scores dictionary
+    grade += num #loops through each value and adds the next until we have grabbed all the vlaues out of the weighted scores dictionary
 
 
 ### add in the corresponding letter grade to the calculated number
-  #initalize letter grade variable as a string
+  #initialize letter grade variable as a string
 letter_grade=""
 
 # use grade number to assign a value to letter grade
