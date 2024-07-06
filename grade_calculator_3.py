@@ -70,22 +70,19 @@ earned_points["discussion"]=[]
 
 #collecting discussion points for the amount set by the user in the quantity dictionary
 for i in range(quantity["discussion"]):
-    discuss = input(f"Enter a number of points earned for discussion {i + 1}): ")
-    i+=1
-    try:
-        discuss = float(discuss)
-    except:
-        print('Please use numeric digits.')
-        i-=1
-        continue
-    if discuss > 6 or discuss < 0: #make sure it a valid number of points and lwet them reenter if not
-        print('Please enter a positive number equal to or less than 6.')
-        i-=1
-        continue #To do: fix this it does not stop the input from being accepted
-    earned_points['discussion'].append(float(discuss))
-    
-    
-
+    while (True):
+        discuss = input(f"Enter a number of points earned for discussion {i + 1}): ")
+        try: 
+            discuss = float(discuss)
+            if 0 <= discuss <= 6:
+                earned_points['discussion'].append(float(discuss))
+                i+=1 
+                break
+            else:
+                print('Please enter a number between 0 and 6. Please try again.')
+        except ValueError:
+            print("Invalid input. Please enter a valid number between 0 and 6.")     
+            
 print("...")
 print("...")
 
@@ -137,10 +134,10 @@ while True:
         earned_points["exercise"] = float(earned_points["exercise"])
     except:
         print('Please use numeric digits.')
-        continue
+        break
     if earned_points["exercise"] > 14 or earned_points["exercise"] < 0:  #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 14.')
-        continue
+        break
     break
 
 
