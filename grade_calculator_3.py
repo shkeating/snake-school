@@ -193,7 +193,6 @@ total_points = {
     "exercise": earned_points['exercise'],
     "quiz": earned_points['quiz']
 }
-print(f"total discussion points is {total_points['discussion']}")
 
 ### earned grades percentage calculations
 percent = {}
@@ -201,7 +200,6 @@ percent = {}
 for key in total_points:
     percent[key] = total_points[key] / points[key] * 100
     #calculates percent by dividing points attainable by total points earned for the category, and then multiply by 100 to get their percentage value out of 100
-print(percent)
 
 
 ### loop through percentages and multiply them by their weights. 
