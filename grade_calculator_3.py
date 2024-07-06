@@ -19,7 +19,8 @@ deliverable_weight = {
 }
 
 #discussion grades
-discussion_points = 36
+num_discussion_posts = input("how many discussion posts were assigned in the course?")
+discussion_points = num_discussion_posts * 6
 #creates empty list to store pointsa
 earned_discussion_points = []
 
@@ -37,14 +38,15 @@ while True:
     if discuss > 6 or discuss < 0: #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 6.')
         continue
-    if len(earned_discussion_points) >= 6:  #stop collecting values once we have 6
+    if len(earned_discussion_points) >= num_discussion_posts:  #stop collecting values once we have the amount of discussion posts there were
         break
     earned_discussion_points.append(float(discuss))
 total_earned_discussion_points = sum(earned_discussion_points)
 
 
 #assignment grades
-assignment_points = 36
+num_assignment = input("how many discussion posts were assigned in the course?")
+assignment_points = num_assignment_posts * 6
     # creates empty list to store the points
 earned_assignment_points = []
 
@@ -59,7 +61,7 @@ while True:
     if assignment > 6 or assignment < 0: #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 6.')
         continue
-    if len(earned_assignment_points) >= 6:  #stop collecting values once we have 6  
+    if len(earned_assignment_points) >= num_assignment:  #stop collecting values once we have the number of assignments there were
         break
     earned_assignment_points.append(float(assignment))
 total_earned_assignment_points = sum(earned_assignment_points)
