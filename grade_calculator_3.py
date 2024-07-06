@@ -21,7 +21,7 @@ deliverable_weight = {
 #discussion grades
 discussion_points = 36
 #creates empty list to store pointsa
-earned_discussion_points = [0]
+earned_discussion_points = []
 
 print("We will start by entering your points earned on each assignment in the course. We will start with your discussion posts. They are worth 6 points each")
 
@@ -46,7 +46,7 @@ total_earned_discussion_points = sum(earned_discussion_points)
 #assignment grades
 assignment_points = 36
     # creates empty list to store the points
-earned_assignment_points = [0]
+earned_assignment_points = []
 
 #collecting assignment points for the six assignments
 while True:
