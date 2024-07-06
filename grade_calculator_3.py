@@ -105,7 +105,8 @@ print("...")
 print("Just two more left to enter! The w3 exercise completion is worth 14 points. How many did you earn?")
 while True:
     print('Enter points earned on w3 exercises, up to 14 points: ')
-    earned_points["exercise"].update(input())
+    exer = input()
+    earned_points["exercise"] = exer
     try:
         earned_points["exercise"] = float(earned_points["exercise"])
     except:
@@ -123,7 +124,8 @@ print("...")
 #w3 quiz grade. take input from user, validate it, and add it to earned points dictionary
 while True:
     print('Last one! Enter points earned on the w3 quiz, up to 14 points: ')
-    earned_points["quiz"].update(input())
+    quiz = input()
+    earned_points["quiz"] = quiz
     try:
          earned_points["quiz"] = float(earned_points["quiz"])
     except:
@@ -168,7 +170,7 @@ for key in percent:
 weighted = {}
 
 for key in percent:
-   weighted[key] = weight[key] * total_points[key]
+   weighted[key] = percent[key] * weight[key]
 
 # sum the categories to get output of numerical grade earned
   # initialize variable for grade
