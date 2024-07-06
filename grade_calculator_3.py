@@ -8,7 +8,7 @@
 
 # variable initalization
 
-print("lets figure out your grade in Programming for Problem Solving!")
+print("Let's figure out your grade in Programming for Problem Solving!")
 
 # assignment type weights
 weight_discussion = 0.36
@@ -19,7 +19,10 @@ weight_quiz = 0.14
 
 #discussion grades
 discussion_points = 36
+#creates empty list to store pointsa
 earned_discussion_points = [0]
+
+print("We will start by entering your points earned on each assignment in the course.")
 
 #collecting discussion points for the six assignments
 while True:
@@ -99,8 +102,8 @@ earned_quiz = earned_quiz_points / quiz_points * 100
 # output points and averages for every category
 print(f"the average for discussion posts was {earned_discussion}%, with points totaling to {total_earned_discussion_points} out of 36.")
 print(f"the average for weekly assignments was {earned_assignment}%, with points totaling to {total_earned_discussion_points} out of 36.")
-print(f"the average for weekly assignments was {earned_quiz}%, with points totaling to {earned_quiz_points} out of 14.")
-print(f"the average for weekly assignments was {earned_exercise}%, with points totaling to {earned_exercise_points} out of 14.")
+print(f"the average for the w3 quiz was {earned_quiz}%, with points totaling to {earned_quiz_points} out of 14.")
+print(f"the average for the w3 exercises was {earned_exercise}%, with points totaling to {earned_exercise_points} out of 14.")
 
 # multiply each percentage by its cooresponding category weight
 
