@@ -10,19 +10,21 @@
 
 print("Let's figure out your grade in Programming for Problem Solving!")
 
-# assignment type weights
-weight_discussion = 0.36
-weight_assignment = 0.36
-weight_exercise = 0.14
-weight_quiz = 0.14
-
+# assignment type weights, stored in dictionary
+deliverable_weight = {
+    "discussion": 0.36,
+    "assignment": 0.36,
+    "exercise": 0.14,
+    "quiz": 0.14
+}
 
 #discussion grades
 discussion_points = 36
 #creates empty list to store pointsa
 earned_discussion_points = [0]
 
-print("We will start by entering your points earned on each assignment in the course.")
+print("We will start by entering your points earned on each assignment in the course. We will start with your discussion posts. They are worth 6 points each")
+
 
 #collecting discussion points for the six assignments
 while True:
@@ -107,10 +109,10 @@ print(f"the average for the w3 exercises was {earned_exercise}%, with points tot
 
 # multiply each percentage by its cooresponding category weight
 
-discussion = weight_discussion * float(earned_discussion)
-assignment = weight_assignment * float(earned_assignment)
-exercise = weight_exercise * float(earned_exercise)
-quiz = weight_quiz * float(earned_quiz)
+discussion = deliverable_weight["discussion"] * float(earned_discussion)
+assignment = deliverable_weight["assignment"] * float(earned_assignment)
+exercise = deliverable_weight["exercise"] * float(earned_exercise)
+quiz = deliverable_weight["quiz"] * float(earned_quiz)
 
 # sum the categories to get output of numerical grade earned
 grade = discussion + assignment + exercise + quiz
