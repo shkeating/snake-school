@@ -11,25 +11,44 @@
 print("Let's figure out your grade in Programming for Problem Solving!")
 
 # assignment type weights, stored in dictionary
-deliverable_weight = {
+weight = {
     "discussion": 0.36,
     "assignment": 0.36,
     "exercise": 0.14,
     "quiz": 0.14
 }
+# assignment quantities, stored in dictionary
+quantity = {
+    "discussion": int(input("how many discussion posts were assigned in the course? ")),
+    "assignment": int(input("how many weekly assignments were assigned in the course? ")),
+    "exercise": 1, # only one of these, will leave it be at 1 as an int
+    "quiz":  1 # only one of these, will leave it be at 1 as an int
+}
 
-#discussion grades
-num_discussion = int(input("how many discussion posts were assigned in the course?"))
-discussion_points = num_discussion * 6
-#creates empty list to store pointsa
-earned_discussion_points = []
+points = {
+    "discussion": quantity["discussion"] * 6,
+    "assignment": quantity["assignment"] * 6,
+    "exercise": quantity["discussion"] * 14,
+    "quiz": quantity["discussion"] * 14
+}
+
+earned_points = {
+    "discussion": [],
+    "assignment": [],
+    "exercise": [],
+    "quiz": []
+}
+
+total_points = {
+    "discussion": sum(earned_points["discussion"]),
+    "assignment": sum(earned_points["assignment"])
+}
 
 print("We will start by entering your points earned on each assignment in the course. We will start with your discussion posts. They are worth 6 points each")
 
-
 #collecting discussion points for the six assignments
 while True:
-    discuss = input(f"Enter a number of points earned for discussion {len(earned_discussion_points)}): ")
+    discuss = input(f"Enter a number of points earned for discussion {len(earned_points["discussion"]) + 1}): ")
     try:
         discuss = float(discuss)
     except:
@@ -38,21 +57,19 @@ while True:
     if discuss > 6 or discuss < 0: #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 6.')
         continue
-    if len(earned_discussion_points) >= num_discussion:  #stop collecting values once we have the amount of discussion posts there were
+    if len(earned_points["discussion"]) + 1 >= quantity["discussion"]:  #stop collecting values once we have the amount of discussion posts there were
         break
-    earned_discussion_points.append(float(discuss))
-total_earned_discussion_points = sum(earned_discussion_points)
+    earned_points["discussion"].append(float(discuss))
 
 
 #assignment grades
-num_assignment = int(input("how many weekly assignments were assigned in the course?"))
-assignment_points = num_assignment * 6
+assignment_points = quantity["assignment"] * 6
     # creates empty list to store the points
 earned_assignment_points = []
 
 #collecting assignment points for the six assignments
 while True:
-    assignment = input(f"Enter a number of points earned for assignment {len(earned_assignment_points)}): ")
+    assignment = input(f"Enter a number of points earned for assignment {len(earned_assignment_points)+ 1}): ") #adds one to account for list starting at index 0
     try:
         assignment = float(assignment)
     except:
@@ -61,7 +78,7 @@ while True:
     if assignment > 6 or assignment < 0: #make sure it a valid number of points and lwet them reenter if not
         print('Please enter a positive number equal to or less than 6.')
         continue
-    if len(earned_assignment_points) >= num_assignment:  #stop collecting values once we have the number of assignments there were
+    if len(earned_assignment_points) + 1 >= quantity["assignment"]:  #stop collecting values once we have the number of assignments there were (one addded to count for list indexing)
         break
     earned_assignment_points.append(float(assignment))
 total_earned_assignment_points = sum(earned_assignment_points)
@@ -111,10 +128,10 @@ print(f"the average for the w3 exercises was {earned_exercise}%, with points tot
 
 # multiply each percentage by its cooresponding category weight
 
-discussion = deliverable_weight["discussion"] * float(earned_discussion)
-assignment = deliverable_weight["assignment"] * float(earned_assignment)
-exercise = deliverable_weight["exercise"] * float(earned_exercise)
-quiz = deliverable_weight["quiz"] * float(earned_quiz)
+discussion = weight["discussion"] * float(earned_discussion)
+assignment = weight["assignment"] * float(earned_assignment)
+exercise = weight["exercise"] * float(earned_exercise)
+quiz = weight["quiz"] * float(earned_quiz)
 
 # sum the categories to get output of numerical grade earned
 grade = discussion + assignment + exercise + quiz
