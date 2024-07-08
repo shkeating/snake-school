@@ -6,6 +6,8 @@
 ##   alphabetical order based on the first letter in each word
 #
 
+import re
+
 #
 ##
 ### user output start
@@ -43,16 +45,23 @@ words = {
 ##
 ### collect words and populate dictionary
 ##
-# TO DO ADD VALIDATION
+# 
 
 while True:
     # prompt the user for word input, and remove any extra whitespace with the strip method
-    word = input("Enter any word, or enter 0 to finish: ").strip()
-    if word == "0":
+    word = input("Enter any word, or enter 0 to finish: ").strip().lower()
+    if word == "0": #exit the program when user is done
         break
-    # store the letters of the word in the value as a list, see comment in data structures for example of intended data structure
-    words[word] = list(word)
+    elif re.match('^[a-zA-Z]+$', word): #checks our word against a regex match using all characters but space and numbers? I thought perhaps there are words that may for some reason include special characters? isk probably would warrant more research
+            words[word] = list(word)
+    else:
+        print("Please enter a word with no spaces inside of your string.")
+        continue #if the ifs fail re-prompt them for their word again
 
+    
+    # store the letters of the word in the value as a list, see comment in data structures for example of intended data structure
+   
+# takes the letters entered by user in their words, a little sunday night destructuring!!
 joined_letters = ' '
 for key in words: #iterate through the keys in the dictionary
     for value in key: #iterate into list
@@ -72,7 +81,7 @@ print("Done!")
 
 #
 ##
-### sort the words -- we could use sorted method... 
+### sort the words 
 ##  
 #  
 
@@ -104,6 +113,8 @@ sorted_keys = sorted_words.keys()  # grab keys to use in string
 sorted_keys_string = ' '.join(sorted_keys) #joins the keys into a string that i can use as output without decorators
 
 print("Here is your sorted list of words, in alphabetical order:")
-print(sorted_keys_string)
+print(sorted_keys_string) #show them their sorted word!!
 print("...")
-print(f"Your word highest in alphabetical order is {words_list[0]}")
+print(f"Your word highest in alphabetical order is {words_list[0]}") #tell the user about the word that is first in the order
+
+# this was probably not a great problem to pick for dictionaries and lists but I learned a lot along the way! absolutely wild ride. 
