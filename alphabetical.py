@@ -54,12 +54,12 @@ while True:
     words[word] = list(word)
 
 print("...")
-print("Thanks for all those words! Time to get sorting")
+print("Thanks for all those words! Time to get sorting.")
 print("...")
 print(f"{words.values}") # showing the user all the letters back for dramatic effect.. i didn't end up needing those lists of letters.. might as well use them for something. dictionaries are undorderd so I actually cant refer to them by index like how i thought i could going into this!
 print("...")
 print("Done!")
-print("Here is your sorted list of words:")
+
 
 #
 ##
@@ -91,6 +91,10 @@ sorted_words = {word: words[word] for word in words_list}
 ##  
 #  
 
-print(sorted_words.keys())
+sorted_keys = sorted_words.keys()  # grab keys to use in string
+sorted_keys_string = ' '.join(sorted_keys) #joins the keys into a string that i can use as output without decorators
+
+print("Here is your sorted list of words, in alphabetical order:")
+print(sorted_keys_string)
 print("...")
 print(f"Your word highest in alphabetical order is {words_list[0]}")
