@@ -53,10 +53,19 @@ while True:
     # store the letters of the word in the value as a list, see comment in data structures for example of intended data structure
     words[word] = list(word)
 
+joined_letters = ' '
+for key in words: #iterate through the keys in the dictionary
+    for value in key: #iterate into list
+        for letters in value: #iterate through list
+            joined_letters += ' ' + letters
+
+
+
+
 print("...")
 print("Thanks for all those words! Time to get sorting.")
 print("...")
-print(f"{words.values}") # showing the user all the letters back for dramatic effect.. i didn't end up needing those lists of letters.. might as well use them for something. dictionaries are undorderd so I actually cant refer to them by index like how i thought i could going into this!
+print(joined_letters) # showing the user all the letters back for dramatic effect.. i didn't end up needing those lists of letters.. might as well use them for something. dictionaries are unordered so I actually cant refer to them by index like how i thought i could going into this. I thought I'd be able to use the letters in the lists to do more manual letter comparison and went to bubble sort instead
 print("...")
 print("Done!")
 
