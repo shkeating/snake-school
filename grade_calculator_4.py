@@ -6,22 +6,12 @@
 # the final course grade using the weights of 
 # each type of assignment and the means for each category using their weights
 
-
-
-##
-###
-#### user output start
-###
 #
-print("Let's figure out your grade in Programming for Problem Solving!")
-print("...")
-print("...")
-
-
 ##
 ###
-#### data structure initialization
+#### DATA STRUCTURES
 ###
+##
 #
 
 
@@ -102,209 +92,99 @@ def collect_points_single(category, max_points):
         except ValueError:
             print(f"Invalid input. Please enter a valid number between 0 and {max_points}.")
 
+#### calculating percentages function
+
+def calculate_percentages(total_points, points):
+    return {key: total_points[key] / points[key] * 100 for key in total_points}
+
+#### calculating weighted points from percentage
+def calculate_weighted_scores(percentages, weights):
+    return {key: percentages[key] * weights[key] for key in percentages}
 
 
-### discussion
+#### adds up weighted scores to total score
+def calculate_final_grade(weighted_scores):
+    return sum(weighted_scores.values())
 
-print("We will start by entering your points earned on your discussion posts. They are worth 6 points each")
-  #creates variable to rep dictionary value for points earned list for easier use in computations
+#### converts final grade score into letter grade
+def determine_letter_grade(grade):
+    if grade >= 94:
+        return 'A'
+    elif grade >= 90:
+        return 'A-'
+    elif grade >= 87:
+        return 'B+'
+    elif grade >= 83:
+        return 'B'
+    elif grade >= 80:
+        return 'B-'
+    elif grade >= 77:
+        return 'C+'
+    elif grade >= 73:
+        return 'C'
+    elif grade >= 70:
+        return 'C-'
+    elif grade >= 67:
+        return 'D+'
+    elif grade >= 63:
+        return 'D'
+    elif grade >= 60:
+        return 'D-'
+    else:
+        return 'E'
+    
 
-  
-  #initializes earned points key value pair for discussions
-earned_points["discussion"]=[]
-
-#collecting discussion points for the amount set by the user in the quantity dictionary
-for i in range(quantity["discussion"]):
-    while (True):
-        #takes user input in for discussion post
-        discuss = input(f"Enter a number of points earned for discussion {i + 1}): ")
-        try: 
-            #checks if points entered are numerical
-            discuss = float(discuss)
-            if 0 <= discuss <= 6:
-                earned_points['discussion'].append(float(discuss))
-                i+=1 #increments i to move to next discussion
-                break
-            else:
-                print('Please enter a number between 0 and 6. Please try again.')
-                 #throws an error if user tries to enter an out of range number
-        except ValueError:
-               #throws an error if user tries to enter non numerical data
-            print("Invalid input. Please enter a valid number between 0 and 6.")     
-            
-print("...")
-print("...")
-
-
-
-
-### weekly assignments
-
-print("Next, we will enter in your points for each weekly assignment. They are worth 6 points each.")
-
-  #initializes earned points key value pair for discussions
-earned_points["assignment"]=[]
-
-#collecting assignment points for the amount set by the user in the quantity dictionary
-for i in range(quantity["assignment"]):
-    while (True):
-        #takes user input for assignment
-        assign = input(f"Enter a number of points earned for assignment {i + 1}): ")
-        try: 
-            # checks that numerical data type was entered
-            assign = float(assign)
-            #checks if number is between 0 and 6
-            if 0 <= assign <= 6:
-                # if it is, adds vlaue to assignments list in earned points dictionary
-                earned_points['assignment'].append(float(assign))
-                i+=1 #increments i to move to next assignment
-                break
-            else:
-                #throws an error if user tries to enter an out of range number
-                print('Please enter a number between 0 and 6. Please try again.')
-                continue
-        except ValueError:
-             #throws an error if user tries to enter non numerical data
-            print("Invalid input. Please enter a valid number between 0 and 6.")
-
-print("...")
-print("...")
+#
+##
+###
+#### PROGRAM EXECUTION
+###
+##
+#
 
 
 ##
 ###
-#### w3 exercises
+#### user output start
+###
+#
+print("Let's figure out your grade in Programming for Problem Solving!")
+print("...")
+
+
+#
+###
+#### calculations for each assignment type using their functions
 ###
 #
 
-#w3 exercise grade, take input from user, validate it, and add it to earned points dictionary
-print("Just two more left to enter! The w3 exercise completion is worth 14 points. How many did you earn?")
-while True:
-    print('Enter points earned on w3 exercises, up to 14 points: ')
-    exer = input()
-    try:
-        exer = float(exer)
-        if exer > 14 or exer < 0:  #make sure it a valid number of points and let them reenter if not
-            print('Please enter a positive number equal to or less than 14.')
-            continue
-        else:
-            earned_points["exercise"] = exer #adds input value to eared points dictionary
-            break
-    except ValueError:
-        print('Please enter numerical input')
+earned_points = {
+    "discussion": collect_points("discussion", 6, quantity["discussion"]),
+    "assignment": collect_points("assignment", 6, quantity["assignment"]),
+    "exercise": collect_points_single("exercise", 14),
+    "quiz": collect_points_single("quiz", 14)
+}
 
-print("...")
-print("...")
 
-##
+#
 ###
-#### w3 quiz
+#### calling grade calculation functions
 ###
 #
 
-#w3 quiz grade. take input from user, validate it, and add it to earned points dictionary
-while True:
-    print('Last one! Enter points earned on the w3 quiz, up to 14 points: ')
-    quiz = input()
-    try:
-        quiz = float(quiz)
-        if quiz > 14 or quiz < 0: #make sure it a valid number of points and let them reenter if not
-            print('Please enter a positive number equal to or less than 14.')
-            continue
-        else:
-            earned_points["quiz"] = quiz #adds input value to eared points dictionary
-            break
-    except ValueError:
-        print('Please enter numerical input')
-
-##
-###
-#### calculations of collected input
-###
-##
+total_points = {key: sum(value) if isinstance(value, list) else value for key, value in earned_points.items()}
+percentages = calculate_percentages(total_points, points)
+weighted_scores = calculate_weighted_scores(percentages, weight)
+final_grade = calculate_final_grade(weighted_scores)
+letter_grade = determine_letter_grade(final_grade)
 
 print("Calculating grade...")
 print("...")
-print("...")
-print("Done!")
-
-### dictionary storing total point totals computations
-
-total_points = {
-    "discussion": sum(earned_points['discussion']), #adds up entries collected earlier
-    "assignment": sum(earned_points['assignment']), #adds up entries collected earlier
-    "exercise": earned_points['exercise'],
-    "quiz": earned_points['quiz']
-}
-
-### earned grades percentage calculations
-percent = {}
-
-for key in total_points:
-    percent[key] = total_points[key] / points[key] * 100
-    #calculates percent by dividing points attainable by total points earned for the category, and then multiply by 100 to get their percentage value out of 100
 
 
-### loop through percentages and multiply them by their weights. 
-
-weighted = {}
-
-for key in percent:
-   weighted[key] = percent[key] * weight[key]
-
-### sum the categories weighted values to get output of numerical grade earned
-  # initialize variable for grade
-grade = 0
- # loop through weighted values dictionary to total up the points and assign to the grade variable
-for num in weighted.values():
-    grade += num #loops through each value and adds the next until we have grabbed all the values out of the weighted scores dictionary
-
-
-### add in the corresponding letter grade to the calculated number
-  #initialize letter grade variable as a string
-letter_grade=""
-
-# use grade number to assign a value to letter grade
-if grade >= 94:
-    letter_grade = 'A'
-elif grade >= 90:
-    letter_grade = 'A-'
-elif grade >= 87:
-    letter_grade = 'B+'
-elif grade >= 83:
-    letter_grade = 'B'
-elif grade >= 80:
-    letter_grade = 'B-'
-elif grade >= 77:
-    letter_grade = 'C+'
-elif grade >= 73:
-    letter_grade = 'C'
-elif grade >= 70:
-    letter_grade = 'C-'
-elif grade >= 67:
-    letter_grade = 'D+'
-elif grade >= 63:
-    letter_grade = 'D'
-elif grade >= 60:
-    letter_grade = 'D-'
-else:
-    letter_grade = 'E'
-
-##
-###
-#### final outputs to user
-###
-#
-print("...")
-print("...")
-
-#loop through percent dictionary, display percentage for each category, points earned, and points possible for each category
-for key in percent:
-    print(f"The average for {key} was {percent[key]}%, with points totaling to {total_points[key]} out of {points[key]}.")
+for key in percentages:
+    print(f"The average for {key} was {percentages[key]:.2f}%, with points totaling to {total_points[key]} out of {points[key]}.")
 
 print("...")
-print("...")
-
-#print final grade info
-print(f'Your final grade calculates to {str(grade)} %. Your letter grade is a(n) {letter_grade}.')
+print(f'Your final grade calculates to {final_grade:.2f}%. Your letter grade is a(n) {letter_grade}.')
 print("...")
