@@ -6,6 +6,17 @@
 # the final course grade using the weights of 
 # each type of assignment and the means for each category using their weights
 
+
+
+##
+###
+#### user output start
+###
+#
+print("Let's figure out your grade in Programming for Problem Solving!")
+print("...")
+
+
 #
 ##
 ###
@@ -143,14 +154,6 @@ def determine_letter_grade(grade):
 #
 
 
-##
-###
-#### user output start
-###
-#
-print("Let's figure out your grade in Programming for Problem Solving!")
-print("...")
-
 
 #
 ###
@@ -184,7 +187,6 @@ print("...")
 
 for key in percentages:
     print(f"The average for {key} was {percentages[key]:.2f}%, with points totaling to {total_points[key]} out of {points[key]}.")
-
+    # the :.2f rounds the flor to the hundredths place
 print("...")
 print(f'Your final grade calculates to {final_grade:.2f}%. Your letter grade is a(n) {letter_grade}.')
-print("...")
