@@ -103,10 +103,13 @@ def get_grades_from_file(filename):
             grades = {} 
             # grades is an empty dictionary (for now) that holds our categories and their corresponding points
             for line in lines: 
-            # in our lines list, we are going to process the data to make it possible to do computations
-                category, *points = line.strip().split() 
-                # remove trailing and leading extra spaces from each line, and splits each word in the line into a list based on internal whitespace
-                grades[category] = list(map(float, points)) 
+                result = parse_line(line)# checks if result is valid 
+                if result: # if valid add data to dictionary
+                    category, points = result
+                    grades[category] = points
+                else:
+                 print(f"Invalid line format: {line.strip()}")
+                 #throws error if format of line does not align to what we want
                 #converts the amounts of points into numbers instead of strings, so they can be used to do math, and assigns the float it is converted to to be associated with its associated category in the grades directory
             return grades 
             # return grades dictionary with categories paired with their points as floats
