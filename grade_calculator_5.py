@@ -69,7 +69,7 @@ print("...") #breaks up output to increase legibility
 ##
 #
 
-#### checks if there is a file, and reads through to collect grades
+####  reads a text file of grades and converts it into a dictionary format, making it easy to do calculations with them later on in the program
 
 def get_grades_from_file(filename):
     if os.path.exists(filename): 
@@ -89,6 +89,19 @@ def get_grades_from_file(filename):
             return grades 
             # return grades dictionary with categories paired with their points as floats
     return None
+
+
+#### creates a file with our grades data if we didn't have one to start with. takes a dictionary of grades and writes it to a text file in a structured format
+def write_grades_to_file(filename, grades):
+    #opens file in write mode, creating it if we don't already have one
+    with open(filename, 'w') as file:
+        for category, points in grades.items(): 
+            # loops through each key and value (categories and points) in our grades dictionary
+            points_str = ' '.join(map(str, points)) 
+            # converts points values into strings and them joins them into a single string, separated by spaces.
+            file.write(f"{category} {points_str}\n") 
+            # writes the category and its affliated points as a line in the file, and adds a new line at the end (/n)
+            
 
 
 #### point collection function for categories with multiple items in them
