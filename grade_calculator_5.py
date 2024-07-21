@@ -69,6 +69,27 @@ print("...") #breaks up output to increase legibility
 ##
 #
 
+#### checks if there is a file, and reads through to collect grades
+
+def get_grades_from_file(filename):
+    if os.path.exists(filename): 
+    # checks if file exists
+        with open(filename, 'r') as file: 
+        # uses with to replace try/catch in a shorter format that is better for file handling because it will close the file after reading it even if there are issues
+            lines = file.readlines() 
+            #lines is a list with each line of the file inside of it as a string
+            grades = {} 
+            # grades is an empty dictionary (for now) that holds our categories and their corresponding points
+            for line in lines: 
+            # in our lines list, we are going to process the data to make it possible to do computations
+                category, *points = line.strip().split() 
+                # remove trailing and leading extra spaces from each line, and splits each word in the line into a list based on internal whitespace
+                grades[category] = list(map(float, points)) 
+                #converts the amounts of points into numbers instead of strings, so they can be used to do math, and assigns the float it is converted to to be associated with its associated category in the grades directory
+            return grades 
+            # return grades dictionary with categories paired with their points as floats
+    return None
+
 
 #### point collection function for categories with multiple items in them
 
