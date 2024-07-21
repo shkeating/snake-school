@@ -6,8 +6,13 @@
 # the final course grade using the weights of 
 # each type of assignment and the means for each category using their weights
 
+# provides functions to work with file paths
 import os
+#imports regex
+import re
 
+#provides file path
+filename = "grades.txt"
 
 ##
 ###
@@ -194,10 +199,10 @@ def determine_letter_grade(grade):
 ###
 #
 
-
-filename = "grades.txt"
+#calls function pulling grade data from file
 earned_points = get_grades_from_file(filename)
 
+#falls back to original collection method and writes collected data to file to use from it
 if not earned_points:
     earned_points = {
         "discussion": collect_points("discussion", 6, quantity["discussion"]),
@@ -206,6 +211,7 @@ if not earned_points:
         "quiz": [collect_points_single("quiz", 14)]
     }
     write_grades_to_file(filename, earned_points)
+    #writes collected data to file
 
 #
 ###

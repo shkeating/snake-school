@@ -1,0 +1,4 @@
+discussion 5.0 6.0 5.0 6.0 3.0 6.0
+assignment 5.0 2.0 5.0 6.0 5.0 6.0
+exercise 13.0
+quiz 12.0
