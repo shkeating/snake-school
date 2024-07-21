@@ -76,6 +76,23 @@ print("...") #breaks up output to increase legibility
 
 ####  reads a text file of grades and converts it into a dictionary format, making it easy to do calculations with them later on in the program
 
+# function to validate if file data is valid for use in the program. checks if each line in the file starts with a category followed by space separated numbers 
+def parse_line(line):
+    #sets pattern to be single alphabetical item (/w), followed by zero or more groups of numerical items (/d) separated by a space (can also capture decimals - (\.\d+)?). this is a non capturing group (?:), 
+    pattern = r'^(\w+)((?: \d+(\.\d+)?)*)$'
+    # match the pattern against the input line after stripping any leading or trailing whitespace
+    match = re.match(pattern, line.strip())
+    if match:
+    # checks for match
+        category = match.group(1) 
+        #gets category name from first match group
+        points = list(map(float, match.group(2).strip().split()))
+        # gets points string from second match group
+        return category, points
+        # gives us back a tuple containing the category and the list of points
+    return None
+    #if no match return none so we know its invalid input
+
 def get_grades_from_file(filename):
     if os.path.exists(filename): 
     # checks if file exists
@@ -94,6 +111,8 @@ def get_grades_from_file(filename):
             return grades 
             # return grades dictionary with categories paired with their points as floats
     return None
+
+
 
 
 #### creates a file with our grades data if we didn't have one to start with. takes a dictionary of grades and writes it to a text file in a structured format
