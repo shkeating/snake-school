@@ -101,8 +101,6 @@ def write_grades_to_file(filename, grades):
             # converts points values into strings and them joins them into a single string, separated by spaces.
             file.write(f"{category} {points_str}\n") 
             # writes the category and its affliated points as a line in the file, and adds a new line at the end (/n)
-            
-
 
 #### point collection function for categories with multiple items in them
 
@@ -196,13 +194,18 @@ def determine_letter_grade(grade):
 ###
 #
 
-earned_points = {
-    "discussion": collect_points("discussion", 6, quantity["discussion"]),
-    "assignment": collect_points("assignment", 6, quantity["assignment"]),
-    "exercise": collect_points_single("exercise", 14),
-    "quiz": collect_points_single("quiz", 14)
-}
 
+filename = "grades.txt"
+earned_points = get_grades_from_file(filename)
+
+if not earned_points:
+    earned_points = {
+        "discussion": collect_points("discussion", 6, quantity["discussion"]),
+        "assignment": collect_points("assignment", 6, quantity["assignment"]),
+        "exercise": [collect_points_single("exercise", 14)],
+        "quiz": [collect_points_single("quiz", 14)]
+    }
+    write_grades_to_file(filename, earned_points)
 
 #
 ###
