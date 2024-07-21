@@ -41,8 +41,8 @@ weight = {
 }
 # assignment quantities, stored in dictionary
 quantity = {
-    "discussion": int(input("How many weekly discussion posts were assigned in the course? ")),
-    "assignment": int(input("How many weekly assignments were assigned in the course? ")),
+    "discussion": 6,
+    "assignment": 6,
     "exercise": 1, # only one of these, will leave it be at 1 as an int
     "quiz":  1 # only one of these, will leave it be at 1 as an int
 }
