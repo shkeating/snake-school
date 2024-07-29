@@ -2,7 +2,7 @@
 
 #
 ## initialization
-#
+
 
 print("Checking your birthdays.txt file to calculate astrological sun signs for each person listed with a birthdate. Birthdate must be entered in YYYY-MM-DD format, with a comma separating persons name from date.")
 
@@ -47,7 +47,7 @@ def get_sign(birthdate):
 
 # uses regex to check formatting
 def validate_line_format(line):
-    #checks that name is alphbetical input, and date format is YYYY-MM-DD
+    #checks that name is alphabetical input, and date format is YYYY-MM-DD
     pattern = r'^[A-Za-z ]+, \d{4}-\d{2}-\d{2}$'
     return re.match(pattern, line)
 

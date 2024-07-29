@@ -127,7 +127,7 @@ def write_grades_to_file(filename, grades):
             points_str = ' '.join(map(str, points)) 
             # converts points values into strings and them joins them into a single string, separated by spaces.
             file.write(f"{category} {points_str}\n") 
-            # writes the category and its affliated points as a line in the file, and adds a new line at the end (/n)
+            # writes the category and its affiliated points as a line in the file, and adds a new line at the end (/n)
 
 #### point collection function for categories with multiple items in them
 
